@@ -370,6 +370,11 @@ extern int rcu_my_thread_group_empty(void);
 			smp_wmb(); \
 		(p) = (typeof(*v) __force space *)(v); \
 	})
+#define __rcu_assign_pointer_unsafe(p, v, space) \
+	({ \
+        smp_wmb(); \
+		(p) = (typeof(*v) __force space *)(v); \
+	})
 
 
 /**
@@ -706,6 +711,10 @@ static inline notrace void rcu_read_unlock_sched_notrace(void)
  */
 #define rcu_assign_pointer(p, v) \
 	__rcu_assign_pointer((p), (v), __rcu)
+
+#define rcu_assign_pointer_unsafe(p, v) \
+	__rcu_assign_pointer_unsafe((p), (v), __rcu)
+
 
 /**
  * RCU_INIT_POINTER() - initialize an RCU protected pointer

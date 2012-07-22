@@ -205,16 +205,7 @@ struct bio *bio_clone_mddev(struct bio *bio, gfp_t gfp_mask,
 	mddevp[-1] = mddev;
 	b->bi_destructor = mddev_bio_destructor;
 	__bio_clone(b, bio);
-	if (bio_integrity(bio)) {
-		int ret;
-
-		ret = bio_integrity_clone(b, bio, gfp_mask, mddev->bio_set);
-
-		if (ret < 0) {
-			bio_put(b);
-			return NULL;
-		}
-	}
+	bio_integrity(bio);
 
 	return b;
 }
