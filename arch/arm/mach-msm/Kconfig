@@ -2437,3 +2437,4 @@ config HTC_ACCESSORY_ONEWIRE
         help
           Provides support of HTC one wire protocol driver.
 endif
+
