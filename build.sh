@@ -11,7 +11,7 @@ rm output/system/lib/modules/kineto_gan.ko
 rm output/system/lib/modules/bcm4329.ko
 rm output/system/lib/modules/sequans_sdio.ko
 rm output/system/lib/modules/spidev.ko
-rm *.zip
+rm output/*.zip
 
 START=$(date +%s)
 echo "****Building****"
