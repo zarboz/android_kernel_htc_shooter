@@ -673,11 +673,6 @@ mutex_unlock(&drv_state.lock);
 #endif /* CONFIG_CPU_VOTALGE_TABLE */
 
 
-mutex_unlock(&drv_state.lock);
-}
-#endif /* CONFIG_CPU_VOTALGE_TABLE */
-
-
 static void __init scpll_init(int pll, unsigned int max_l_val)
 {
 	uint32_t regval;
@@ -898,11 +893,6 @@ uint32_t acpu_check_khz_value(unsigned long khz)
 			f--;
 		}
 	}
-	uint32_t max_khz;
-	struct clkctl_acpu_speed *f;
-
-	max_khz = 1944000;
-	acpu_freq_tbl = acpu_freq_tbl_oc;
 
 	return 0;
 }
