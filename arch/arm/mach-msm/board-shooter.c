@@ -6734,4 +6734,3 @@ MACHINE_START(SHOOTER, "shooter")
 	.timer = &msm_timer,
 	.init_early = shooter_charm_init_early,
 MACHINE_END
-
