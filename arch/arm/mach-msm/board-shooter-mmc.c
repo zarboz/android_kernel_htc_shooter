@@ -179,12 +179,13 @@ static unsigned int shooter_wifi_status(struct device *dev)
 	return shooter_wifi_cd;
 }
 
-static unsigned int shooter_wifislot_type = MMC_TYPE_SDIO_WIFI;
-static struct mmc_platform_data shooter_wifi_data = {
-	.ocr_mask               = MMC_VDD_28_29,
-	.status                 = shooter_wifi_status,
-	.register_status_notify = shooter_wifi_status_register,
-	.embedded_sdio          = &shooter_wifi_emb_data,
+static unsigned int shooter_u_wifislot_type = MMC_TYPE_SDIO_WIFI;
+static struct mmc_platform_data shooter_u_wifi_data = {
+	.ocr_mask               = MMC_VDD_24_25,
+	.status                 = shooter_u_wifi_status,
+	.register_status_notify = shooter_u_wifi_status_register,
+	.embedded_sdio          = &shooter_u_wifi_emb_data,
+>>>>>>> b7d3528... Lower WiFi voltage
 	.mmc_bus_width  = MMC_CAP_4_BIT_DATA,
 	.slot_type = &shooter_wifislot_type,
 	.msmsdcc_fmin   = 400000,
