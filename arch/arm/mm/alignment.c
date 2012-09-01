@@ -727,8 +727,6 @@ do_alignment(unsigned long addr, unsigned int fsr, struct pt_regs *regs)
 	int isize = 4;
 	int thumb2_32b = 0;
 
-    memset(&offset, 0, sizeof(union offset_union));
-
 	instrptr = instruction_pointer(regs);
 
 	fs = get_fs();
