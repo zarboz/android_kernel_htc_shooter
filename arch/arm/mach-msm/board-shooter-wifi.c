@@ -19,8 +19,6 @@ int shooter_wifi_reset(int on);
 int shooter_wifi_set_carddetect(int on);
 int shooter_wifi_get_mac_addr(unsigned char *buf);
 
-#if defined(CONFIG_DHD_USE_STATIC_BUF) || defined(CONFIG_BCM4329_DHD_USE_STATIC_BUF)
-
 #define PREALLOC_WLAN_NUMBER_OF_SECTIONS	4
 #define PREALLOC_WLAN_NUMBER_OF_BUFFERS		160
 #define PREALLOC_WLAN_SECTION_HEADER		24
@@ -56,11 +54,9 @@ static void *shooter_wifi_mem_prealloc(int section, unsigned long size)
 		return NULL;
 	return wifi_mem_array[section].mem_ptr;
 }
-#endif
 
 int __init shooter_init_wifi_mem(void)
 {
-#if defined(CONFIG_DHD_USE_STATIC_BUF) || defined(CONFIG_BCM4329_DHD_USE_STATIC_BUF)
 	int i;
 
 	for (i = 0; (i < WLAN_SKB_BUF_NUM); i++) {
@@ -77,11 +73,10 @@ int __init shooter_init_wifi_mem(void)
 	}
 	return 0;
 }
-#endif
 
 static struct resource shooter_wifi_resources[] = {
 	[0] = {
-		.name		= "bcmdhd_wlan_irq",
+		.name		= "bcm4329_wlan_irq",
 		.start		= MSM_GPIO_TO_INT(shooter_GPIO_WIFI_IRQ),
 		.end		= MSM_GPIO_TO_INT(shooter_GPIO_WIFI_IRQ),
 #ifdef HW_OOB
@@ -96,16 +91,12 @@ static struct wifi_platform_data shooter_wifi_control = {
 	.set_power      = shooter_wifi_power,
 	.set_reset      = shooter_wifi_reset,
 	.set_carddetect = shooter_wifi_set_carddetect,
-#if defined(CONFIG_DHD_USE_STATIC_BUF) || defined(CONFIG_BCM4329_DHD_USE_STATIC_BUF)
 	.mem_prealloc   = shooter_wifi_mem_prealloc,
-#else
-    .mem_prealloc   = NULL,
-#endif	
 	.get_mac_addr	= shooter_wifi_get_mac_addr,
 };
 
 static struct platform_device shooter_wifi_device = {
-	.name           = "bcmdhd_wlan",
+	.name           = "bcm4329_wlan",
 	.id             = 1,
 	.num_resources  = ARRAY_SIZE(shooter_wifi_resources),
 	.resource       = shooter_wifi_resources,
@@ -277,6 +268,7 @@ int __init shooter_wifi_init(void)
 	shooter_wifi_update_nvs("btc_params80=0\n");
 	shooter_wifi_update_nvs("btc_params6=30\n");
 	shooter_init_wifi_mem();
-	return platform_device_register(&shooter_wifi_device);
+	ret = platform_device_register(&shooter_wifi_device);
+	return ret;
 }
 
