@@ -20,6 +20,9 @@ make shooter_defconfig
 make -j9
 
 echo "****Creating boot image****"
+mkdir output/system
+mkdir output/system/lib
+mkdir output/system/lib/modules
 cp arch/arm/boot/zImage output/kernel/zImage
 cp drivers/net/wimax/SQN/sequans_sdio.ko output/system/lib/modules/sequans_sdio.ko
 cp drivers/net/kineto_gan.ko output/system/lib/modules/kineto_gan.ko
