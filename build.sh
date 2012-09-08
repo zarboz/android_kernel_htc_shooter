@@ -8,8 +8,9 @@ make mrproper
 rm output/kernel/zImage
 rm output/system/lib/modules/msm-buspm-dev.ko
 rm output/system/lib/modules/kineto_gan.ko
-rm output/system/lib/modules/bcmdhd.ko
+rm output/system/lib/modules/bcm4329.ko
 rm output/system/lib/modules/sequans_sdio.ko
+rm output/system/lib/modules/spidev.ko
 rm output/*.zip
 
 START=$(date +%s)
@@ -25,7 +26,8 @@ mkdir output/system/lib/modules
 cp arch/arm/boot/zImage output/kernel/zImage
 cp drivers/net/wimax/SQN/sequans_sdio.ko output/system/lib/modules/sequans_sdio.ko
 cp drivers/net/kineto_gan.ko output/system/lib/modules/kineto_gan.ko
-cp drivers/net/wireless/bcmdhd/bcmdhd.ko output/system/lib/modules/bcmdhd.ko
+cp drivers/net/wireless/bcm4329_248/bcm4329.ko output/system/lib/modules/bcm4329.ko
+cp drivers/spi/spidev.ko output/system/lib/modules/spidev.ko
 cp arch/arm/mach-msm/msm-buspm-dev.ko output/system/lib/modules/msm-buspm-dev.ko
 cd output
 zip -q -r Jmz-Kernel-SHOOTER-$(date +"%Y%m%d").zip .
