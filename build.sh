@@ -17,7 +17,8 @@ START=$(date +%s)
 echo "****Building****"
 
 make shooter_defconfig
-make -j9 CROSS_COMPILE=/home/jmz/evgerrit/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+make menuconfig
+make -j9 CROSS_COMPILE=arm-eabi-
 
 echo "****Creating boot image****"
 mkdir output/system
@@ -30,7 +31,7 @@ cp drivers/net/wireless/bcmdhd/bcmdhd.ko output/system/lib/modules/bcmdhd.ko
 cp drivers/spi/spidev.ko output/system/lib/modules/spidev.ko
 cp arch/arm/mach-msm/msm-buspm-dev.ko output/system/lib/modules/msm-buspm-dev.ko
 cd output
-zip -q -r Jmz-Kernel-SHOOTER-$(date +"%Y%m%d").zip .
+zip -q -r DIRT-MOD-Kernel-SHOOTER-$(date +"%Y%m%d").zip .
 
 echo "****Compile done****"
 echo "****Kernel and modules are in output/****"
