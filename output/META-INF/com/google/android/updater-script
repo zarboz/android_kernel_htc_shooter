@@ -6,7 +6,7 @@ ui_print("-Success!");
 ui_print("-Model ID - HTC shooter");
 ui_print("-Ok to proceed");
 ifelse(is_mounted("/system") == "/system", unmount("/system"));
-ui_print("Now flashing Jmz EvoV Kernel");
+ui_print("Prepping Team Dirt Kernel.....");
 ui_print("Flashing Kernel...");
 package_extract_dir("kernel", "/tmp");
 set_perm(0, 0, 0777, "/tmp/dump_image");
