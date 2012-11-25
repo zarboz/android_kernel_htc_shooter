@@ -17,7 +17,7 @@ START=$(date +%s)
 echo "****Building****"
 
 make shooter_defconfig
-make -j9 CROSS_COMPILE=/home/michaelc/android/android-toolchain-eabi-12-10/bin/arm-eabi-
+make -j9 CROSS_COMPILE=/home/michaelc/android/android-toolchain-eabi-12-11/bin/arm-eabi-
 
 echo "****Creating boot image****"
 mkdir output/system
