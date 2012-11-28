@@ -30,7 +30,7 @@ cp drivers/net/wireless/bcmdhd/bcmdhd.ko output/system/lib/modules/bcmdhd.ko
 cp drivers/spi/spidev.ko output/system/lib/modules/spidev.ko
 cp arch/arm/mach-msm/msm-buspm-dev.ko output/system/lib/modules/msm-buspm-dev.ko
 cd output
-zip -q -r DIRT-MOD-Kernel-SHOOTER-$(date +"%Y%m%d").zip .
+zip -q -r -DIRT-MOD-Kernel-SHOOTER $(date +"%Y%m%d").zip .
 
 echo "****Compile done****"
 echo "****Kernel and modules are in output/****"
