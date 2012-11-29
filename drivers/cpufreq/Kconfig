@@ -111,7 +111,7 @@ config CPU_FREQ_DEFAULT_GOV_INTERACTIVE
 
 config CPU_FREQ_DEFAULT_GOV_SMARTASSV2
 	bool "smartass2"
-	select CPU_FREQ_GOV_SMARTASS2
+	select CPU_FREQ_GOV_SMARTASSV2
 	help
 	  Use the CPUFreq governor 'smartassV2' as default.
 
