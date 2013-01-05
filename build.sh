@@ -16,8 +16,8 @@ rm output/*.zip
 START=$(date +%s)
 echo "****Building****"
 
-make shooter_defconfig
-make -j9 CROSS_COMPILE=/home/michaelc/android/android-toolchain-eabi-12-11/bin/arm-eabi-
+make shooter_aosp_defconfig
+make -j5 CROSS_COMPILE=/home/michael/android/android-toolchain-eabi-12.12/bin/arm-eabi-
 
 echo "****Creating boot image****"
 mkdir output/system
@@ -30,7 +30,7 @@ cp drivers/net/wireless/bcmdhd/bcmdhd.ko output/system/lib/modules/bcmdhd.ko
 cp drivers/spi/spidev.ko output/system/lib/modules/spidev.ko
 cp arch/arm/mach-msm/msm-buspm-dev.ko output/system/lib/modules/msm-buspm-dev.ko
 cd output
-zip -q -r -DIRT-MOD-Kernel-SHOOTER $(date +"%Y%m%d").zip .
+zip -q -r -DIRT-MOD-MAC-Kernel-SHOOTER $(date +"%Y%m%d").zip .
 
 echo "****Compile done****"
 echo "****Kernel and modules are in output/****"
